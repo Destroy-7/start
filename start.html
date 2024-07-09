@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Быстрые ссылки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+
+        .stars, .twinkling, .clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .stars {
+            background: url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+            z-index: 0;
+        }
+        .twinkling {
+            background: url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+            z-index: 1;
+
+            -moz-animation: move-twink-back 200s linear infinite;
+            -ms-animation: move-twink-back 200s linear infinite;
+            -o-animation: move-twink-back 200s linear infinite;
+            -webkit-animation: move-twink-back 200s linear infinite;
+            animation: move-twink-back 200s linear infinite;
+        }
+        @keyframes move-twink-back {
+            from {background-position: 0 0;}
+            to {background-position: -10000px 5000px;}
+        }
+        @-webkit-keyframes move-twink-back {
+            from {background-position: 0 0;}
+            to {background-position: -10000px 5000px;}
+        }
+        @-moz-keyframes move-twink-back {
+            from {background-position: 0 0;}
+            to {background-position: -10000px 5000px;}
+        }
+        @-ms-keyframes move-twink-back {
+            from {background-position: 0 0;}
+            to {background-position: -10000px 5000px;}
+        }
+        @-o-keyframes move-twink-back {
+            from {background-position: 0 0;}
+            to {background-position: -10000px 5000px;}
+        }
+
+        iframe {
+            display: iframe-container;
+
+            padding: 1%;
+            border: 1% solid #000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            background-color: #cfcfcf;
+            text-align: center;
+
+            margin: 1%;
+            z-index: 9;
+
+            overflow-y: auto; /* Добавляет вертикальную прокрутку, если содержимое блока больше его высоты */
+            max-height: 100%;
+            min-height: 100%;
+
+            flex: 1; /* Блоки займут все доступное пространство */
+
+
+            height: 50vh; /* Высота iframe равна половине высоты видимой области окна браузера */
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between; /* Центрирование блоков по горизонтали */
+            
+            max-height: 40vh; /* Максимальная высота блока, после которой появится прокрутка */
+            margin: 1vh;
+        }
+        .container h1 {
+            margin: 1vh 5vh 1vh 5vh;
+        }
+        .block {
+            display: container;
+
+            padding: 1%;
+            border: 1% solid #000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            background-color: #cfcfcf;
+            text-align: center;
+
+            margin: 1%;
+            z-index: 9;
+
+            overflow-y: auto; /* Добавляет вертикальную прокрутку, если содержимое блока больше его высоты */
+            max-height: 100%;
+
+            flex: 1; /* Блоки займут все доступное пространство */
+            
+            
+        }
+
+        .button {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 34px;
+            line-height: 32px;
+            background: #000;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: 0.5s;
+            border: none;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+            margin: 10px 0; /* Сохраняем отступы */
+            padding: 10px 15px; /* Сохраняем внутренние отступы */
+            border-radius: 5px; /* Сохраняем скругление углов */
+            cursor: pointer; /* Сохраняем указатель курсора */
+            box-sizing: border-box; /* Сохраняем модель расчета размеров */
+        }
+        .button span {
+            display: block;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            text-align: center;
+            background: #0c0c0c;
+            color: rgba(255, 255, 255, 1);
+            transition: 0.5s;
+
+
+            /*display: button;*/
+        }
+/*        .button:hover span {
+            color: rgba(255, 255, 255, 1);
+        }*/
+        .button span::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+        .button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                #c0392b,
+                #f39c12,
+                #f1c40f,
+                #2ecc71,
+                #3498db,
+                #2980b9,
+                #9b59b6,
+                #8e44ad
+            );
+            background-size: 400%;
+            opacity: 0;
+            transition: 2.5s;
+            animation: eff 20s linear infinite;
+            border-radius: 5px; /* Сохраняем скругление углов */
+        }
+
+        .button:hover::before,
+        .button:hover::after {
+            opacity: 1;
+        }
+        .button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                #c0392b,
+                #f39c12,
+                #f1c40f,
+                #2ecc71,
+                #3498db,
+                #2980b9,
+                #9b59b6,
+                #8e44ad
+            );
+            background-size: 400%;
+            opacity: 0;
+            filter: blur(20px);
+            transition: 0.5s;
+            animation: eff 20s ease infinite;
+        }
+        @keyframes eff {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .corner-gif {
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            width: 10%;
+            height: auto;
+            z-index: 9;
+        }
+
+        .bottom-right-text {
+            position: fixed; /* Фиксированное позиционирование относительно окна браузера */
+            bottom: 10px; /* Отступ снизу */
+            right: 10px; /* Отступ справа */
+            font-size: 24px; /* Большой размер шрифта */
+            color: #00FF00; /* Яркий зеленый цвет текста */
+            text-shadow: 2px 2px 4px #000000; /* Тень текста для лучшей читаемости */
+            z-index: 1000; /* Убедитесь, что текст будет поверх других элементов */
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    
+    <img src="https://raw.githubusercontent.com/Destroy-7/opaopapa/main/%D0%B4%D0%B0.gif" alt="Описание гифки" class="corner-gif" />
+    <div class="bottom-right-text">Destroy7 ver 1.0</div>
+
+
+    <div>
+        <div class="container">
+            <div class="block resources">
+                <h1>Прочие ссылки</h1>
+                <a href="https://music.yandex.ru/home" target="_blank" class="button"><span>[Я] Музыка</span></a>
+                <a href="https://anilibria.top/" target="_blank" class="button"><span>Либрийцы</span></a>
+
+                <a href="https://chromewebstore.google.com/detail/highlight-this-finds-and/fgmbnmjmbjenlhbefngfibmjkpbcljaj?hl=en-US" target="_blank" class="button"><span>Хайлайтер зис в хром</span></a>
+            </div>
+            <div class="block resources">
+                <h1>Быстрые ссылки</h1>
+                <a href="https://mail.avito.ru" target="_blank" class="button"><span>Почта</span></a>
+                <a href="https://lms.avito.ru/" target="_blank" class="button"><span>Авито академия</span></a>
+                <a href="https://people.avito.ru/" target="_blank" class="button"><span>People</span></a>
+                <a href="https://bwp.avito.lan/" target="_blank" class="button"><span>SimpleOficce</span></a>
+
+            </div>
+            <div class="block resources">
+                <h1>Рабочая зона</h1>
+                <a href="https://adm.avito.ru/" target="_blank" class="button"><span>Админка</span></a>
+                <a href="https://mus.avito.ru/cf/pages/viewpage.action?pageId=271843899" target="_blank" class="button"><span>Регламенты - ХиО</span></a>
+                <h3>Основные:</h3>
+                <a href="https://mus.avito.ru/cf/pages/viewpage.action?pageId=271843899" target="_blank" class="button"><span>Регламенты - ХиО</span></a>
+
+            </div>
+        </div>
+        <div class="container">
+            <iframe src="med.html"class="block"></iframe>
+        </div>
+    </div>
+    
+
+</body>
+</html>
