@@ -1,4 +1,4 @@
-const version = "[22.07.2024}"; // Дата обнавления
+const version_md = "[22.07.2024}"; // Дата обнавления
 
 const medData = `
 <div item><div title> иноферт </div> <div list><b>БАД</b></div><hr><div images></div></div>
@@ -20101,4 +20101,4 @@ const medData = `
 `; //КОНЕЦ (для быстрого поиска конца через ctrl + f)
 document.getElementById('med_data').innerHTML = medData;
 
-document.querySelector('.category-btn[data-category="med_data"]').textContent += " " + version;
+document.querySelector('.category-btn[data-category="med_data"]').textContent += " " + version_md;
